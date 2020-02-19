@@ -1,7 +1,7 @@
 package com.wjltechservices.controller;
 
 import com.wjltechservices.database.model.Vendor;
-import com.wjltechservices.exceptions.VendorNotFoundException;
+import com.wjltechservices.exception.VendorNotFoundException;
 import com.wjltechservices.service.VendorService;
 import org.springframework.web.bind.annotation.*;
 

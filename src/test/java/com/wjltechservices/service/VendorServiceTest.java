@@ -20,8 +20,9 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class VendorServiceTest {
 
-    public static final String TEST_VENDOR = "Test Vendor";
-    public static final String TEST_VENDOR_ID = "testvendor";
+    private static final String TEST_VENDOR = "Test Vendor";
+    private static final String TEST_VENDOR_ID = "testvendor";
+
     @Mock
     private VendorRepository vendorRepository;
 
@@ -30,18 +31,11 @@ class VendorServiceTest {
 
     @BeforeEach
     void setUp() {
+        testVendor = Vendor.VendorBuilder.aVendor()
+                .withVendorId(TEST_VENDOR_ID)
+                .withVendorName(TEST_VENDOR)
+                .build();
         vendorService = new VendorService(vendorRepository);
-
-        testVendor = new Vendor();
-        testVendor.setVendorName(TEST_VENDOR);
-        testVendor.setVendorId(TEST_VENDOR_ID);
-    }
-
-    @Test
-    void testAddVendor_generatesVendorId() {
-        Vendor result = vendorService.addVendor(TEST_VENDOR);
-
-        assertThat(result.getVendorId(), is(TEST_VENDOR_ID));
     }
 
     @Test

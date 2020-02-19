@@ -1,6 +1,7 @@
 package com.wjltechservices.service;
 
 import com.wjltechservices.database.model.Customer;
+import com.wjltechservices.database.model.Customer.CustomerBuilder;
 import com.wjltechservices.database.repository.CustomerRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,9 +21,9 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class CustomerServiceTest {
 
-    public static final String CUSTOMER_NAME = "Joe Bloggs";
-    public static final String HOME_CITY = "London";
-    public static final Long CUSTOMER_ID = 1L;
+    private static final String CUSTOMER_NAME = "Joe Bloggs";
+    private static final String HOME_CITY = "London";
+    private static final Long CUSTOMER_ID = 1L;
 
     @Mock
     private CustomerRepository customerRepository;
@@ -34,9 +35,9 @@ class CustomerServiceTest {
     void setUp() {
         customerService = new CustomerService(customerRepository);
 
-        testCustomer = new Customer();
-        testCustomer.setCustomerName(CUSTOMER_NAME);
-        testCustomer.setHomeCity(HOME_CITY);
+        testCustomer = CustomerBuilder.aCustomer()
+                .withCustomerName(CUSTOMER_NAME)
+                .withHomeCity(HOME_CITY).build();
     }
 
     @Test

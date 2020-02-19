@@ -70,4 +70,40 @@ public class Customer {
         result = 31 * result + (homeCity != null ? homeCity.hashCode() : 0);
         return result;
     }
+
+    public static final class CustomerBuilder {
+        private Long customerId;
+        private String customerName;
+        private String homeCity;
+
+        private CustomerBuilder() {
+        }
+
+        public static CustomerBuilder aCustomer() {
+            return new CustomerBuilder();
+        }
+
+        public CustomerBuilder withCustomerId(Long customerId) {
+            this.customerId = customerId;
+            return this;
+        }
+
+        public CustomerBuilder withCustomerName(String customerName) {
+            this.customerName = customerName;
+            return this;
+        }
+
+        public CustomerBuilder withHomeCity(String homeCity) {
+            this.homeCity = homeCity;
+            return this;
+        }
+
+        public Customer build() {
+            Customer customer = new Customer();
+            customer.setCustomerId(customerId);
+            customer.setCustomerName(customerName);
+            customer.setHomeCity(homeCity);
+            return customer;
+        }
+    }
 }

@@ -1,7 +1,7 @@
 package com.wjltechservices.controller;
 
 import com.wjltechservices.database.model.Vendor;
-import com.wjltechservices.exceptions.VendorNotFoundException;
+import com.wjltechservices.exception.VendorNotFoundException;
 import com.wjltechservices.service.VendorService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,8 +19,8 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class VendorControllerTest {
-    public static final String TEST_VENDOR = "Test Vendor";
-    public static final String TEST_VENDOR_ID = "testvendor";
+    private static final String TEST_VENDOR = "Test Vendor";
+    private static final String TEST_VENDOR_ID = "testvendor";
 
     @Mock
     private VendorService vendorService;
@@ -41,9 +41,10 @@ class VendorControllerTest {
 
     @Test
     void testGetVendor() {
-        Vendor testVendor = new Vendor();
-        testVendor.setVendorId(TEST_VENDOR_ID);
-        testVendor.setVendorName(TEST_VENDOR);
+        Vendor testVendor = Vendor.VendorBuilder.aVendor()
+                .withVendorId(TEST_VENDOR_ID)
+                .withVendorName(TEST_VENDOR)
+                .build();
         when(vendorService.getVendor(TEST_VENDOR_ID)).thenReturn(Optional.of(testVendor));
 
         Vendor result = vendorController.getVendor(TEST_VENDOR_ID);

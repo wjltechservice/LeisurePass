@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * Service methods for Customer operations
+ */
 @Service
 public class CustomerService {
 
@@ -17,6 +20,13 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
+    /**
+     * Add a new customer to the system
+     *
+     * @param customerName Name of the customer
+     * @param homeCity     Home city of the customer
+     * @return the details of the created customer
+     */
     public Customer addCustomer(String customerName, String homeCity) {
         if (customerName == null || customerName.isEmpty()) {
             throw new IllegalArgumentException("Customer name cannot be null or empty");
@@ -32,6 +42,12 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
+    /**
+     * Get a customer from the repository
+     *
+     * @param customerId Id of the customer to look up
+     * @return Optional of any customer found
+     */
     public Optional<Customer> getCustomer(Long customerId) {
         return customerRepository.findById(customerId);
     }

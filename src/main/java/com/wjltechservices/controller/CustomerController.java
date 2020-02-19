@@ -1,7 +1,7 @@
 package com.wjltechservices.controller;
 
 import com.wjltechservices.database.model.Customer;
-import com.wjltechservices.exceptions.CustomerNotFoundException;
+import com.wjltechservices.exception.CustomerNotFoundException;
 import com.wjltechservices.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

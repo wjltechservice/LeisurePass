@@ -1,7 +1,7 @@
 package com.wjltechservices.controller;
 
 import com.wjltechservices.database.model.Customer;
-import com.wjltechservices.exceptions.CustomerNotFoundException;
+import com.wjltechservices.exception.CustomerNotFoundException;
 import com.wjltechservices.service.CustomerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -43,10 +43,11 @@ class CustomerControllerTest {
 
     @Test
     void testGetCustomer() {
-        Customer testCustomer = new Customer();
-        testCustomer.setCustomerId(TEST_CUSTOMER_ID);
-        testCustomer.setCustomerName(TEST_CUSTOMER);
-        testCustomer.setHomeCity(TEST_HOME_CITY);
+        Customer testCustomer = Customer.CustomerBuilder.aCustomer()
+                .withCustomerId(TEST_CUSTOMER_ID)
+                .withCustomerName(TEST_CUSTOMER)
+                .withHomeCity(TEST_HOME_CITY)
+                .build();
         when(customerService.getCustomer(TEST_CUSTOMER_ID)).thenReturn(Optional.of(testCustomer));
 
         Customer result = customerController.getCustomer(TEST_CUSTOMER_ID);
