@@ -26,9 +26,7 @@ public class VendorService {
         vendor.setVendorName(vendorName);
         vendor.setVendorId(vendorId);
 
-        vendorRepository.save(vendor);
-
-        return vendor;
+        return vendorRepository.save(vendor);
     }
 
     public Optional<Vendor> getVendor(String vendorId) {

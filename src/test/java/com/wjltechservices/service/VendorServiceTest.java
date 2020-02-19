@@ -12,6 +12,7 @@ import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -48,6 +49,16 @@ class VendorServiceTest {
         vendorService.addVendor(TEST_VENDOR);
 
         verify(vendorRepository).save(testVendor);
+    }
+
+    @Test
+    void testAddVendor_throwsExceptionForNullVendor() {
+        assertThrows(IllegalArgumentException.class, () -> vendorService.addVendor(null));
+    }
+
+    @Test
+    void testAddVendor_throwsExceptionForEmptyVendor() {
+        assertThrows(IllegalArgumentException.class, () -> vendorService.addVendor(""));
     }
 
     @Test
