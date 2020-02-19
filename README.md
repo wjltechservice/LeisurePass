@@ -5,10 +5,10 @@ Demo of a tourism pass management solution
 * A running MySQL instance with the database `leisure_pass` created
 
 ## Building the application
-Application can be built by running `gradlew build`
+Application can be built by running `gradle build`
 
 ## Running the application
-Application can be run by executing `gradlew bootRun`
+Application can be run by executing `gradle bootRun`
 
 Or alternatively from an IDE run the LeisurePassApplication#main method
 
