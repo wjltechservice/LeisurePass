@@ -14,15 +14,13 @@ Or alternatively from an IDE run the LeisurePassApplication#main method
 
 By default the application will then be accessible at http://localhost:9999
 
-## Assumptions
-* Security/authorisation has been handled by a prior system
-* The required IDs will be known and provided by the UI, this is to simplify the number of endpoints needed. A possible
-extension would be to provide extra endpoints to lookup IDs from customer/vendor/pass information
-
-## Extensions
-* I would have liked to manage the database with liquibase, but ran out of time to implement this
+## Future Extensions
+* Liquibase database management
 * An auth system such that the endpoints can only be called by authorised customers/vendors
 * Additional lookup endpoints to retrieve IDs from customer/vendor/pass information
+* Swagger for API doc generation
+* A web UI
+* An App UI
 
 ## Available endpoints
 ### /customer/new
