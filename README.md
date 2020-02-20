@@ -21,6 +21,7 @@ By default the application will then be accessible at http://localhost:9999
 * Swagger for API doc generation
 * A web UI
 * An App UI
+* CI/CD with github
 
 ## Available endpoints
 ### /customer/new
